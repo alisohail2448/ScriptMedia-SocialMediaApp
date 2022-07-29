@@ -34,7 +34,7 @@ const loading = useSelector((state)=>state.postReducer.uploading)
 
   const handleUpload = async (e) => {
     e.preventDefault();
-    console.log(user)
+    // console.log(user)
     const newPost = {
       userId: user._id,
       desc: desc.current.value,

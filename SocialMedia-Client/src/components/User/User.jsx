@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { followUser, UnfollowUser } from '../../Actions/userAction';
+import { makeChats } from '../../Api/ChatRequest';
 
 
 
@@ -9,13 +10,29 @@ const User = ({person}) => {
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.authReducer.authData);
     const [following, setFollowing] = useState(person.followers.includes(user._id));
-
+    const [chatUser, setChatUser] = useState([]);
 
     const handleFollow = () =>{
         following ? dispatch(UnfollowUser(person._id, user)) : dispatch(followUser(person._id, user))
 
         setFollowing((prev) => !prev)
+        // startChat();
     }
+
+    // const startChat = async() =>{
+    //     const {data} = await makeChats()
+    //     const newPost = {
+    //         senderId:user._id,
+    //         receiverId: person._id,
+    //       };
+    //     setChatUser(newPost);
+    //     console.log(newPost);
+    //     try {
+    //         dispatch(chatStart(newPost));
+    //       } catch (err) {
+    //         console.log(err);
+    //       }
+    // }
 
   return (
 

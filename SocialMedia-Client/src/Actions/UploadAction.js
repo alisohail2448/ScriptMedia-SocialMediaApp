@@ -9,6 +9,7 @@ export const uploadImage = (data) => async (dispatch) => {
       console.log(error);
     }
   };
+
   
   export const uploadPost = (data) => async (dispatch) => {
     dispatch({ type: "UPLOAD_START" });
